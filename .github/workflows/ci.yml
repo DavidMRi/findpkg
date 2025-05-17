@@ -22,7 +22,9 @@ jobs:
       run: docker build -f Dockerfile.python2 -t py27 .
 
     - name: Run flake8 inside container
-      run: docker run --rm py27 flake8 /app/findpkg
+      run: |
+        docker run --rm py27 flake8 /app/findpkg --count --select=E9,F63,F7,F82 --show-source --statistics
+        docker run --rm py27 flake8 /app/findpkg --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
 
     - name: Run tests inside container
       run: docker run --rm py27 pytest
