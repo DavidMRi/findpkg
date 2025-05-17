@@ -25,8 +25,10 @@ class TestFindFunction:
 
     @pytest.mark.parametrize("f,y,n", [(_linear_f, 34, 17),
                                        (_exponential_f, 256, 8),
-                                       (_logarithmic_f, _logarithmic_f(87), 87),
-                                       (_hyperbolic_f, _hyperbolic_f(79), 79)])
+                                       (_logarithmic_f,
+                                        _logarithmic_f(87), 87),
+                                       (_hyperbolic_f,
+                                        _hyperbolic_f(79), 79)])
     def test_exact_match(self, f, y, n):
         assert find(f, y, 0, 100) == n
 
@@ -61,15 +63,18 @@ class TestFindFunction:
     # ---------- Invalid Input Cases ----------
 
     def test_invalid_range_a_greater_than_b(self):
-        with pytest.raises(AssertionError, match="Invalid range: b must be equal or greater than a."):
+        with pytest.raises(AssertionError, match="Invalid range: b must be "
+                                                 "equal or greater than a."):
             find(lambda x: x, 2.2, 5, 4)
 
     @pytest.mark.parametrize("a,b", [(-1, 0), (-2, -1)])
     def test_negative_range_values(self, a, b):
-        with pytest.raises(AssertionError, match="Invalid range: a and b must be non-negative."):
+        with pytest.raises(AssertionError, match="Invalid range: a and b "
+                                                 "must be non-negative."):
             find(lambda x: x, 2.2, a, b)
 
     def test_non_increasing_function(self):
-        with pytest.raises(AssertionError, match="Invalid function: f is not an increasing function"):
+        with pytest.raises(AssertionError, match="Invalid function: f is not"
+                                                 " an increasing function"):
             find(lambda x: 10 - x, 2.2, 0, 4)
 
