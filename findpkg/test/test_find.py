@@ -77,4 +77,3 @@ class TestFindFunction:
         with pytest.raises(AssertionError, match="Invalid function: f is not"
                                                  " an increasing function"):
             find(lambda x: 10 - x, 2.2, 0, 4)
-

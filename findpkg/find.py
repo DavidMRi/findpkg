@@ -57,4 +57,3 @@ def __f_is_increasing(f, a, b):
             else:
                 low = y
     return True
-
