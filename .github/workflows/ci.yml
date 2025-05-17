@@ -22,7 +22,7 @@ jobs:
       run: docker build -f Dockerfile.python2 -t py27 .
 
     - name: Run flake8 inside container
-      run: docker run --rm py27 flake8 findpfg/find.py findpfg/test/test_find.py
+      run: docker run --rm py27 flake8 /app/findpkg
 
     - name: Run tests inside container
       run: docker run --rm py27 pytest
