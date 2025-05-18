@@ -16,7 +16,7 @@
 ### Clone the repository
 
 ```bash
-git clone https://github.com/your-username/findpkg.git
+git clone https://github.com/DavidMRi/findpkg.git
 cd findpkg
 ```
 
