@@ -19,7 +19,7 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
     - name: Build Python 2.7 container
-      run: docker build -f Dockerfile.python2 -t py27 .
+      run: docker build -f python2.Dockerfile -t py27 .
 
     - name: Run flake8 inside container
       run: |
